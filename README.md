@@ -27,10 +27,11 @@ Where:
 ## Architecture
 The simulator is highly modular and structured into 4 core components:
 1. **Topology Engine (`core/topology_engine.py`)**: Generates 2D coordinates for a specified number of nodes and computes Euclidean distances.
-2. **RF Simulator (`core/rf_simulator.py`)**: Assigns physical bitrates and calculates FER for potential links based on physical distance, injecting Gaussian noise to simulate real-world interference.
+2. **RF Simulator (`core/rf_simulator.py`)**: Assigns physical bitrates and calculates FER for potential links based on physical distance, injecting Gaussian noise to simulate real-world 
+interference.
 3. **Routing Engine (`core/routing_engine.py`)**: Calculates shortest paths using Dijkstra's algorithm twice: once using Hop Count and once using the computed ALM weights.
 4. **Visualizer (`core/visualizer.py`)**: Renders the network graph, highlighting the distinct paths chosen by the two routing strategies.
-
+<img width="2385" height="1971" alt="wmn_simulation_result" src="https://github.com/user-attachments/assets/219162c6-9e19-403a-8815-259a2eca54f4" />
 ## Installation & Usage
 
 1. Clone the repository and navigate to the project directory.

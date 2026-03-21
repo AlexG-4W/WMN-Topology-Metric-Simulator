@@ -1,0 +1,2 @@
+# WMN Topology & Metric Simulator
+A Python-based software and mathematical simulator for Wireless Mesh Networks (WMN). This project demonstrates the critical difference in routing efficiency when utilizing the classic **Hop Count** metric versus the radio-oriented **Airtime Link Metric (ALM)**, as standardized in IEEE 802.11s. It uses mathematical modeling of the transmission medium to assess throughput degradation without requiring physical hardware deployment.

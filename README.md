@@ -24,6 +24,10 @@ Where:
 - **$r$**: Physical bitrate in Mbps (modeled based on the distance between nodes).
 - **$e_f$**: Frame Error Rate (FER), factoring in distance-based signal loss and normally distributed noise.
 
+<img width="2385" height="1971" alt="wmn_simulation_result" src="https://github.com/user-attachments/assets/b2663184-6aab-4e74-9d97-5092bb05c9ac" />
+
+
+
 ## Architecture
 The simulator is highly modular and structured into 4 core components:
 1. **Topology Engine (`core/topology_engine.py`)**: Generates 2D coordinates for a specified number of nodes and computes Euclidean distances.

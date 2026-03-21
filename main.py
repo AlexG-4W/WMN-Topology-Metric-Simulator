@@ -15,8 +15,8 @@ def main():
     args = parser.parse_args()
 
     # 1. Topology Generation
-    te = TopologyEngine(seed=args.seed)
-    G = te.generate_random_topology(num_nodes=args.nodes, max_x=args.width, max_y=args.height)
+    engine = TopologyEngine(seed=args.seed)
+    G = engine.generate_random_topology(num_nodes=args.nodes, max_x=args.width, max_y=args.height)
     
     # 2. RF Simulation
     rf = RFSimulator(seed=args.seed)
@@ -26,23 +26,13 @@ def main():
     re = RoutingEngine(G)
     re.calculate_alm_weights()
     
-    # Select connected source and target
-    connected_components = list(nx.connected_components(G))
-    largest_cc = max(connected_components, key=len)
-    nodes = list(largest_cc)
+    source_node = 0
+    target_node = args.nodes - 1
     
-    longest_path = 0
-    source_node, target_node = nodes[0], nodes[1]
-    
-    # Find two nodes that are far apart
-    for u in nodes:
-        for v in nodes:
-            if u != v and nx.has_path(G, u, v):
-                path_len = nx.shortest_path_length(G, u, v)
-                if path_len > longest_path:
-                    longest_path = path_len
-                    source_node = u
-                    target_node = v
+    import sys
+    if not nx.has_path(G, source_node, target_node):
+        print(f"No path exists between node {source_node} and {target_node}. Try a different seed or higher density.")
+        sys.exit(0)
                     
     # Find paths
     hop_path = re.find_hop_count_path(source_node, target_node)

@@ -40,7 +40,14 @@ The simulator is highly modular and structured into 4 core components:
    ```
 3. Run the simulation:
    ```bash
+   # Run with default parameters
    python main.py
+
+   # Run with custom parameters
+   python main.py --nodes 50 --width 200.0 --height 200.0 --seed 42
+   
+   # View all available options
+   python main.py --help
    ```
 
 ## Results

@@ -1,4 +1,5 @@
 import networkx as nx
+import argparse
 from core.topology_engine import TopologyEngine
 from core.rf_simulator import RFSimulator
 from core.routing_engine import RoutingEngine
@@ -6,12 +7,19 @@ from core.visualizer import NetworkVisualizer
 import random
 
 def main():
+    parser = argparse.ArgumentParser(description="WMN Topology & Metric Simulator")
+    parser.add_argument("--nodes", type=int, default=30, help="Number of nodes in the mesh network")
+    parser.add_argument("--width", type=float, default=100.0, help="Width of the simulation area in meters")
+    parser.add_argument("--height", type=float, default=100.0, help="Height of the simulation area in meters")
+    parser.add_argument("--seed", type=int, default=None, help="Random seed for reproducible topologies")
+    args = parser.parse_args()
+
     # 1. Topology Generation
-    te = TopologyEngine(seed=42)
-    G = te.generate_random_topology(num_nodes=30, max_x=100, max_y=100)
+    te = TopologyEngine(seed=args.seed)
+    G = te.generate_random_topology(num_nodes=args.nodes, max_x=args.width, max_y=args.height)
     
     # 2. RF Simulation
-    rf = RFSimulator(seed=42)
+    rf = RFSimulator(seed=args.seed)
     G = rf.apply_rf_model(G)
     
     # 3. Routing Engine
